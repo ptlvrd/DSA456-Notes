@@ -511,3 +511,102 @@ So, we say \( T(n) \) is \( O(n) \).
 5. **Find Dominating Term**: Simplify to find the term that matters most as n gets very large.
 
 This tells us how the code will perform as the size of the input (n) increases. For the factorial function, the steps grow linearly with n, which is called \( O(n) \) in Big-O notation.
+
+When analyzing loop iterations in terms of time complexity, the terms \( n \), \( n+1 \), and \( n-1 \) refer to different scenarios depending on the specific behavior of the loop and the starting/ending conditions. Here’s a detailed explanation:
+
+### Loop Iterations
+
+1. **\( n \) Iterations:**
+   - This is the straightforward case where the loop runs exactly \( n \) times.
+   - **Example:**
+     ```python
+     for i in range(n):
+         # loop body
+     ```
+   - **Explanation:** The loop starts at 0 and ends at \( n-1 \), making a total of \( n \) iterations.
+
+2. **\( n+1 \) Iterations:**
+   - This occurs when the loop runs one extra iteration, often due to the inclusive nature of the loop’s end condition.
+   - **Example:**
+     ```python
+     for i in range(n+1):
+         # loop body
+     ```
+   - **Explanation:** The loop starts at 0 and ends at \( n \), making a total of \( n+1 \) iterations.
+
+3. **\( n-1 \) Iterations:**
+   - This occurs when the loop runs one fewer iteration, often due to the exclusive nature of the loop’s start or end condition.
+   - **Example:**
+     ```python
+     for i in range(1, n):
+         # loop body
+     ```
+   - **Explanation:** The loop starts at 1 and ends at \( n-1 \), making a total of \( n-1 \) iterations.
+
+### Use Cases
+
+- **Using \( n \) Iterations:**
+  - When the loop condition is straightforward, such as `for i in range(n)`, and you want the loop to execute exactly \( n \) times.
+  - **Example:**
+    ```python
+    for i in range(10):  # Runs 10 times
+        print(i)
+    ```
+
+- **Using \( n+1 \) Iterations:**
+  - When you need the loop to run one extra iteration beyond \( n \).
+  - This could be for inclusive ranges or when a boundary condition requires one extra step.
+  - **Example:**
+    ```python
+    for i in range(n+1):  # Runs 11 times if n is 10
+        print(i)
+    ```
+  - **Real-world scenario:**
+    - Checking conditions up to and including the \( n \)-th element.
+
+- **Using \( n-1 \) Iterations:**
+  - When the loop needs to start from 1 instead of 0, or when it should run up to \( n-1 \) elements.
+  - **Example:**
+    ```python
+    for i in range(1, n):  # Runs 9 times if n is 10
+        print(i)
+    ```
+  - **Real-world scenario:**
+    - When calculating differences between consecutive elements, you often iterate from the second element to the last.
+
+### Examples in Context
+
+1. **\( n \) Iterations:**
+   - **Function:**
+     ```python
+     def print_numbers(n):
+         for i in range(n):
+             print(i)
+     ```
+   - **Explanation:** Prints numbers from 0 to \( n-1 \).
+
+2. **\( n+1 \) Iterations:**
+   - **Function:**
+     ```python
+     def print_numbers_inclusive(n):
+         for i in range(n+1):
+             print(i)
+     ```
+   - **Explanation:** Prints numbers from 0 to \( n \), including \( n \).
+
+3. **\( n-1 \) Iterations:**
+   - **Function:**
+     ```python
+     def print_numbers_exclusive(n):
+         for i in range(1, n):
+             print(i)
+     ```
+   - **Explanation:** Prints numbers from 1 to \( n-1 \), excluding 0.
+
+### Summary
+
+- **\( n \):** Use when you want the loop to run exactly \( n \) times.
+- **\( n+1 \):** Use when you need one extra iteration, often for inclusive conditions.
+- **\( n-1 \):** Use when you start from 1 or need one fewer iteration, often for exclusive conditions. 
+
+Understanding when to use \( n \), \( n+1 \), or \( n-1 \) helps in accurately counting loop iterations and analyzing the time complexity of algorithms.
