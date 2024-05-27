@@ -610,3 +610,63 @@ When analyzing loop iterations in terms of time complexity, the terms \( n \), \
 - **\( n-1 \):** Use when you start from 1 or need one fewer iteration, often for exclusive conditions. 
 
 Understanding when to use \( n \), \( n+1 \), or \( n-1 \) helps in accurately counting loop iterations and analyzing the time complexity of algorithms.
+
+### Introduction to Recursion
+
+**What is Recursion?**
+
+Recursion is like when you ask yourself the same question over and over again until you find an answer. In programming, recursion is when a function calls itself to solve a problem.
+
+**Why is Recursion Important?**
+
+Sometimes, problems are easier to solve if you can break them down into smaller parts. Recursion helps to do that. Some algorithms (ways to solve problems) are easier to write and understand using recursion.
+
+**Why Should You Learn Recursion?**
+
+- Some problems are best solved with recursion.
+- Textbooks and resources often show recursive solutions.
+- Understanding recursion helps you understand these solutions better.
+
+### The Run-time Stack
+
+**What is the Run-time Stack?**
+
+Imagine a stack of plates. The run-time stack works in a similar way for your programs. It's where your program keeps track of what it's doing and what variables it’s using.
+
+**How Does It Work?**
+
+1. **Function Calls**: When a function (a piece of code that does a specific job) is called, it’s like adding a new plate to the stack.
+2. **Local Variables**: Each function has its own variables (like plates with food on them). These variables only exist on the current plate.
+3. **Function Ends**: When a function finishes, the plate is removed from the stack, and you go back to the previous plate.
+
+**Why is the Run-time Stack Important for Recursion?**
+
+When a function calls itself (recursion), it adds a new plate to the stack each time. This helps keep track of where you are in solving the problem. When each "plate" (function call) finishes, it’s removed from the stack until you get back to the first plate (the original function call).
+
+### Example
+
+Let's say you have a problem like this: 
+
+**How to Find a Factorial (like 5!) Using Recursion**
+
+1. **What is Factorial?**: The factorial of 5 (written as 5!) is 5 * 4 * 3 * 2 * 1.
+2. **Using Recursion**: You can solve this by multiplying 5 by the factorial of 4 (which is 4 * 3 * 2 * 1), and so on.
+
+Here's a simple function to find the factorial:
+
+```python
+def factorial(n):
+    if n == 1:  # Base case
+        return 1
+    else:
+        return n * factorial(n - 1)  # Recursive call
+```
+
+**How Does It Work?**
+
+1. `factorial(5)` calls `factorial(4)`, which calls `factorial(3)`, and so on, adding plates to the stack.
+2. When it reaches `factorial(1)`, it knows the answer is 1 (this is the base case, like finding the bottom plate).
+3. It then multiplies back up the stack: 1 * 2, then 2 * 3, then 6 * 4, and finally 24 * 5 to get 120.
+
+Each function call adds a "plate" to the stack until it reaches the base case, then it removes each plate one by one, multiplying the values as it goes back up.
+
