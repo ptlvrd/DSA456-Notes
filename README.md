@@ -670,3 +670,32 @@ def factorial(n):
 
 Each function call adds a "plate" to the stack until it reaches the base case, then it removes each plate one by one, multiplying the values as it goes back up.
 
+**Lists**
+
+### What is a List?
+Imagine you have a row of toy boxes, and each toy box has a number on it, like Box 1, Box 2, Box 3, and so on. Each box can hold one toy. This row of boxes with numbers is what we call a list.
+
+### Properties of a List
+- **Ordered**: The boxes have a specific order. There is a "first" box, a "second" box, and so on.
+- **Sorted or Unsorted**: The toys inside the boxes can be arranged in a specific way (like all the cars together, all the dolls together) which is sorted, or they can just be put in randomly, which is unsorted.
+- **Duplicates or Unique**: You can have more than one of the same toy (duplicates), or you can have all different toys (unique).
+
+### List Operations
+These are some things you can do with your row of toy boxes:
+
+1. **Initialize**: This means getting your row of empty toy boxes ready to start putting toys in.
+2. **Add an Item**: Put a new toy in one of the boxes.
+3. **Remove an Item**: Take a toy out of a box.
+4. **Search**: Look through the boxes to find a specific toy.
+5. **Sort**: Arrange the toys in a specific order (like all the cars together, all the dolls together).
+6. **Iterate Through All Items**: Go through each box one by one to see what toy is inside.
+
+### Different Ways to Make a List
+There are two main ways to set up your row of toy boxes:
+
+1. **Array Method**: This is like having a long bench with fixed spaces for each box. Each space always has a box, and you can't move the spaces around. If you want to add a new box, you have to put it at the end or move everything to make space.
+
+2. **Linked List Method**: This is like having a line of friends holding hands. Each friend (box) can hold a toy and also point to the next friend in line. If you want to add a new friend in the middle, you just break the chain and link hands with the new friend.
+
+### Summary
+A list is just a fancy name for a row of toy boxes where each box has an important place in line. You can do lots of things with this row of boxes, like adding new toys, taking toys out, or finding a specific toy. And there are two main ways to set up your boxes: all in fixed spaces or like friends holding hands.
