@@ -699,3 +699,296 @@ There are two main ways to set up your row of toy boxes:
 
 ### Summary
 A list is just a fancy name for a row of toy boxes where each box has an important place in line. You can do lots of things with this row of boxes, like adding new toys, taking toys out, or finding a specific toy. And there are two main ways to set up your boxes: all in fixed spaces or like friends holding hands.
+
+### What is a Linked List?
+A linked list is like a chain of friends holding hands. Each friend has a toy, and they hold hands to show the next friend in line. This makes a long chain where each friend can point to the next friend.
+
+### Parts of a Linked List
+- **Node**: This is each friend in the chain. Each node (friend) has two things:
+  1. A toy (data object).
+  2. A pointer (hand) to the next friend (node) in the line.
+
+- **Pointer to First Node**: The linked list itself keeps track of the first friend in the chain. By following the pointers (hands) from the first friend, you can visit all the other friends.
+
+### Example of Linked List
+Imagine you want to store 5 numbers. Here’s what it looks like in a linked list:
+
+1. Friend 1 holds number 10 and points to Friend 2.
+2. Friend 2 holds number 20 and points to Friend 3.
+3. Friend 3 holds number 30 and points to Friend 4.
+4. Friend 4 holds number 40 and points to Friend 5.
+5. Friend 5 holds number 50 and points to nothing (end of the chain).
+
+### How is it Different from an Array?
+An array is like a long bench with numbered spots, and you can directly go to any spot on the bench. So, if you want the 5th spot, you just jump straight to it.
+
+But in a linked list, you have to start from the first friend and follow the pointers (hands) one by one to reach the 5th friend. This means you have to walk through the line of friends to get to any specific one.
+
+### Operations on a Linked List
+Here are some things you can do with your chain of friends:
+
+1. **push_front**: Add a new friend at the beginning of the line.
+2. **push_back**: Add a new friend at the end of the line.
+3. **pop_front**: Remove the first friend in the line.
+4. **pop_back**: Remove the last friend in the line.
+5. **insert**: Add a new friend at a specific place in the line.
+6. **erase**: Remove a specific friend from the line.
+7. **erase(a,b)**: Remove all friends between friend a and friend b.
+8. **traversals**: Do something with each friend in the line, like checking their toys.
+
+### Special Points
+- It's really quick to find the first friend.
+- To find any other friend, you have to start at the beginning and follow the pointers.
+- This is unlike an array where you can quickly jump to any spot.
+
+### Enhancements
+Sometimes, to make things easier, we add more features to our linked list. We will learn about these when we talk about how to actually make a linked list.
+
+### Summary
+A linked list is like a line of friends holding hands, where each friend has a toy and points to the next friend. You can add or remove friends and follow the line to find a specific friend. It's different from an array because you have to follow the pointers to move through the line.
+
+### List Implementation
+Think of two ways to store your toys: in a long box (array) or with friends holding hands (linked list). Each way has its own set of cool tricks and challenges.
+
+### Array-Based Implementation
+Imagine you have a big toy box with numbered slots. Each slot can hold one toy.
+
+#### Advantages:
+1. **Easy Access**: You can quickly grab any toy from any slot. If you want the toy in slot 3, you just look at slot 3.
+2. **Fast Searching**: If the toys are in order, you can quickly find any toy using a trick called binary search.
+
+#### Drawbacks:
+1. **Wasted Space**: Sometimes you have more slots than toys, so some slots stay empty.
+2. **Hard to Add Toys in the Middle**: If you want to add a toy in the middle, you have to shift all the toys after it to make space.
+3. **Hard to Remove Toys**: If you want to take out a toy from the middle, you have to shift all the toys after it to fill the gap.
+4. **Growing Pains**: If your toy box gets full, you need to get a bigger one and move all your toys, which takes time.
+
+### Linked List Implementation
+Now imagine your toys are with friends standing in a line. Each friend has a toy and points to the next friend.
+
+#### Advantages:
+1. **Easy to Grow and Shrink**: You can easily add or remove friends. If you want to add a new friend, you just link them in without moving others.
+2. **Efficient Use of Space**: No wasted slots. Each friend only holds a toy if there’s one to hold.
+3. **Flexible Memory**: Friends can stand anywhere, so you don’t need a big space for all of them together.
+
+#### Drawbacks:
+1. **Extra Space for Pointers**: Each friend needs to remember who they point to, which takes extra space.
+2. **Slower Search**: You can’t quickly jump to a specific friend. You have to start at the first friend and follow the line.
+3. **No Caching**: Since friends can be anywhere, you can’t use special tricks to speed up looking at all the toys.
+
+### Memory Requirements
+- **Arrays**: Imagine your toy box has extra slots for future toys. When full, you get a bigger box and move all toys to the new box.
+- **Linked Lists**: Each toy gets a new friend, and you never have extra friends without toys. But each friend needs to remember the next friend, which uses a bit more space.
+
+### Summary
+Arrays are like a neat toy box with numbered slots, great for quick access and searching but not so good for adding or removing toys in the middle. Linked lists are like a chain of friends holding toys, great for adding and removing toys easily but slower to search and needing more space for each friend’s pointer.
+
+### Nodes
+Imagine each of your friends is holding a toy and has a string to point to the next friend. This friend with a toy and a string is called a **node**.
+
+- **Singly Linked List**: Each friend has one string pointing to the next friend.
+- **Doubly Linked List**: Each friend has two strings, one pointing to the next friend and one pointing to the previous friend.
+
+### Iterators
+Think of an iterator like a magic pointer that helps you go through the line of friends without worrying about how they’re connected. This magic pointer can do a few things:
+
+1. **First**: Point to the first friend in line.
+2. **Next**: Move to the next friend in line.
+3. **IsDone**: Check if the pointer has reached the end of the line.
+4. **CurrentItem**: Show the toy the current friend is holding.
+
+### Linked List
+The linked list is like the master plan that knows where the first friend (node) is. This helps you follow the strings from one friend to another to see all the toys.
+
+### Summary
+- **Nodes** are friends holding toys with strings to other friends.
+- **Singly Linked List**: Each friend has one string pointing to the next friend.
+- **Doubly Linked List**: Each friend has two strings, one pointing to the next and one to the previous friend.
+- **Iterators** are magic pointers that help you visit each friend one by one without worrying about the strings.
+- **Linked List** is the master plan that knows where the first friend is, helping you follow the line and see all the toys.
+
+### Linked List Overview
+Imagine you have a magic toy box called **DList** (Doubly Linked List). This magic toy box doesn’t hold toys directly but knows where the first and last toy are.
+
+### How We Make Our Linked List
+
+#### Step 1: Creating the Magic Toy Box (DList)
+First, we need a magic toy box that can remember where the first and last toys are:
+
+```python
+class LinkedList:
+    def __init__(self):
+        self.front = None  # Pointer to the first toy
+        self.back = None   # Pointer to the last toy
+```
+
+- **front**: This is like a pointer that shows us where the first toy is.
+- **back**: This is another pointer that shows us where the last toy is.
+
+#### Step 2: Creating Nodes (Friends with Toys)
+Now, let’s create friends who hold the toys and have strings to point to the next and previous friends:
+
+```python
+class LinkedList:
+    class Node:
+        def __init__(self, data, next=None, prev=None):
+            self.data = data  # The toy
+            self.next = next  # String pointing to the next friend
+            self.prev = prev  # String pointing to the previous friend
+
+    def __init__(self):
+        self.front = None  # Pointer to the first friend
+        self.back = None   # Pointer to the last friend
+```
+
+- **data**: The toy the friend is holding.
+- **next**: The string pointing to the next friend in line.
+- **prev**: The string pointing to the previous friend in line.
+
+### How Nodes and Pointers Work
+- If there are no toys yet, **front** and **back** both point to **None** (nothing).
+- When we add a toy, we make a new friend (Node) and update the **front** and **back** pointers to point to this new friend.
+
+### Example of Adding Toys
+1. **First Toy**: When you add the first toy, **front** and **back** both point to this new friend.
+2. **Second Toy**: When you add a second toy, the first friend points to the second friend, and the second friend points back to the first friend. Update **back** to point to the second friend.
+
+### Special Value: None
+- **None**: It’s like saying there’s no friend or toy. If a pointer points to **None**, it means it’s not pointing to any friend.
+
+### Checking for None
+To see if there is no toy or friend, we check if a pointer is **None**:
+
+```python
+ref = None
+if(ref):
+    print("reference refers to something")
+else:
+    print("reference refers to nothing (None)")
+```
+
+In this example, because `ref` is **None**, it prints “reference refers to nothing (None).”
+
+### Summary
+1. **DList**: A magic toy box that knows where the first and last toys are.
+2. **Node**: Friends holding toys with strings pointing to the next and previous friends.
+3. **None**: Means there is no toy or friend.
+
+### Adding a Toy to the Front (push_front)
+
+Imagine you have a toy box, and you want to add a new toy to the very front. Here’s how we do it:
+
+#### Step 1: Create a New Friend Holding the Toy
+First, you make a new friend who will hold the new toy and point to the friend currently at the front of the line.
+
+```python
+nn = self.Node(data, self.front)
+```
+
+- `nn` is the new friend holding the new toy.
+- `self.front` is the current front friend.
+
+#### Step 2: Link the Current Front Friend Back to the New Friend
+Next, if there’s already a friend at the front, you need to make sure they point back to the new friend.
+
+```python
+if self.front is None:
+    self.back = nn
+else:
+    self.front.prev = nn
+```
+
+- If there are no friends yet (`self.front` is `None`), make the new friend also the last friend.
+- If there is a friend at the front, link them back to the new friend.
+
+#### Step 3: Move the Front Pointer to the New Friend
+Finally, update the front pointer to the new friend.
+
+```python
+self.front = nn
+```
+
+- Now, the new friend is at the front of the line.
+
+### Full push_front Code
+Putting all these steps together, here’s the full function to add a toy to the front:
+
+```python
+def push_front(self, data):
+    nn = self.Node(data, self.front)
+    if self.front is None:
+        self.back = nn
+    else:
+        self.front.prev = nn
+    self.front = nn
+```
+
+### Removing a Toy from the Front (pop_front)
+
+Now, let’s remove the toy from the front of the toy box.
+
+#### Step 1: Check if the Toy Box is Empty
+First, check if there are any toys in the box. If it’s empty, do nothing.
+
+```python
+if self.front is not None:
+```
+
+- If there’s no friend at the front, we don’t need to do anything.
+
+#### Step 2: Hold the Front Friend
+Hold the front friend so we don’t lose them.
+
+```python
+rm = self.front
+```
+
+- `rm` is the front friend holding the toy we want to remove.
+
+#### Step 3: Move the Front Pointer to the Next Friend
+Move the front pointer to the second friend in line.
+
+```python
+self.front = self.front.next
+```
+
+- Now, the second friend becomes the first friend.
+
+#### Step 4: Fix the Previous Pointer of the New Front Friend
+If there’s a new front friend, make sure they don’t point back to the removed friend.
+
+```python
+if self.front is None:
+    self.back = None
+else:
+    self.front.prev = None
+```
+
+- If there’s no friend left, also set the back pointer to `None`.
+- Otherwise, make sure the new front friend’s previous pointer is `None`.
+
+#### Step 5: Delete the Removed Friend
+Finally, delete the friend who was at the front.
+
+```python
+del rm
+```
+
+### Full pop_front Code
+Putting all these steps together, here’s the full function to remove a toy from the front:
+
+```python
+def pop_front(self):
+    if self.front is not None:
+        rm = self.front
+        self.front = self.front.next
+        if self.front is None:
+            self.back = None
+        else:
+            self.front.prev = None
+        del rm
+```
+
+### Summary
+- **push_front**: Add a new friend with a toy to the front of the line.
+- **pop_front**: Remove the friend at the front and move the front pointer to the next friend.
