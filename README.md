@@ -1065,3 +1065,64 @@ This way, the first real car is removed without any issues.
 ### Summary
 
 Sentinel nodes are like special placeholder cars that help us manage our line of toy cars more easily. They ensure we always have a car at the front and back, which simplifies adding and removing cars. This means we don’t have to worry about special cases where the line is empty or has only one car. Instead, our functions can always assume there are at least two cars (the sentinels), making our code cleaner and simpler!
+
+### Stacks and Queues
+
+#### Stacks
+Imagine you have a stack of pancakes. You can only add a new pancake to the top, and you can only take the top pancake off to eat it. This is called a **stack**. The last pancake you put on the stack is the first one you take off. So, it's a **First In, Last Out (FILO)** system.
+
+#### Queues
+Now, think of a line of people waiting for ice cream. The first person in line is the first to get ice cream, and new people join the end of the line. This is called a **queue**. The first person who came is the first to get served. So, it's a **First In, First Out (FIFO)** system.
+
+### Operations
+
+For both stacks and queues, you can do three main things:
+1. **Add an item** (like adding a pancake or a person to the line).
+2. **Remove an item** (like taking a pancake off the stack or serving the next person in line).
+3. **See the next item to be removed** (like looking at the top pancake or seeing who's first in line).
+
+Here’s what we call these operations:
+
+| Operation                     | Stack     | Queue     |
+|-------------------------------|-----------|-----------|
+| **Add an item**               | Push      | Enqueue   |
+| **Remove an item**            | Pop       | Dequeue   |
+| **Access the "next" item**    | Top       | Front     |
+
+### Stacks and Queues are Special Lists
+
+- **Stacks**: Only work with the topmost pancake.
+- **Queues**: Only work with the first person in line.
+
+### Applications
+
+- **Bracket checking**: Using stacks to see if parentheses in math expressions are balanced.
+- **Breadth-first tree traversals**: Using queues to explore data structures like family trees.
+- **Infix to postfix expressions**: Using stacks to convert math expressions.
+- **Postfix expression calculation**: Using stacks to solve math expressions.
+
+### Implementing a Stack
+
+We can make a stack using either an array or a linked list.
+
+#### Array Implementation
+Think of an array like a row of boxes. We keep adding new boxes to the end. If we want to remove the last box, we just take it away. This makes adding and removing very quick.
+
+#### Linked List Implementation
+Imagine a chain of train cars. Each car links to the next one. If we always add new cars to the front, the newest car is always at the front, making it easy to add and remove cars quickly.
+
+### Implementing a Queue
+
+Like stacks, we can make a queue using either an array or a linked list.
+
+#### Linked List Implementation
+To make a queue with a linked list, think of adding new cars to the end of the train. The first car in line is the first to be removed. We can add cars quickly to the end and remove them quickly from the front.
+
+#### Array Implementation
+Using an array for a queue is trickier because we need to keep track of the front and back of the line. If the line goes out of bounds, we can think of the array as a circle where the end connects back to the beginning.
+
+### Conclusion
+
+- **Stacks**: Like a stack of pancakes. Last added is first removed (FILO).
+- **Queues**: Like a line for ice cream. First added is first served (FIFO).
+
