@@ -992,3 +992,76 @@ def pop_front(self):
 ### Summary
 - **push_front**: Add a new friend with a toy to the front of the line.
 - **pop_front**: Remove the friend at the front and move the front pointer to the next friend.
+
+### Sentinels in Linked Lists
+
+Imagine you have a line of toy cars. Each car can connect to the one in front of it and the one behind it. Sometimes, you have to check if there's no car at the front or back, which can be tricky. So, let's add two special toy cars: one at the very front and one at the very back. These special cars don't hold any real data—they are just there to make things simpler. These special cars are called **sentinel nodes**.
+
+### Constructor with Sentinels
+
+When we first set up our line of toy cars, we create these two sentinel cars:
+
+```python
+class LinkedList:
+    class Node:
+        def __init__(self, data, next=None, prev=None):
+            self.data = data
+            self.next = next
+            self.prev = prev
+
+    def __init__(self):
+        self.front = self.Node(None)
+        self.back = self.Node(None, None, self.front)
+        self.front.next = self.back
+```
+
+Here’s what this does:
+- We have two special cars (nodes) with no data.
+- The first special car (`front`) points to the second special car (`back`).
+- The second special car points back to the first special car.
+
+### `push_front` with Sentinels
+
+Let’s add a new car to the front of our line:
+
+```python
+def push_front(self, data):
+    nn = self.Node(data, self.front.next, self.front)
+    self.front.next.prev = nn
+    self.front.next = nn
+```
+
+Step-by-step:
+1. We create a new car (`nn`) with the data we want.
+2. The new car's next pointer points to the car that comes after the front sentinel.
+3. The new car's previous pointer points to the front sentinel.
+4. We update the next pointer of the front sentinel to point to our new car.
+5. We also update the previous pointer of the car that was originally after the front sentinel to point back to our new car.
+
+This way, the new car is correctly added right after the front sentinel, making it the first real car in the line.
+
+### `pop_front` with Sentinels
+
+Now let’s remove the first real car from the front of our line:
+
+```python
+def pop_front(self):
+    if self.front.next is not self.back:
+        rm = self.front.next
+        rm.next.prev = rm.prev
+        rm.prev.next = rm.next
+        del rm
+```
+
+Step-by-step:
+1. We check if there is a real car to remove. If the front sentinel's next pointer points to the back sentinel, it means there are no real cars, so we do nothing.
+2. We point to the first real car (`rm`), which is the one after the front sentinel.
+3. We update the next pointer of the front sentinel to skip this car and point to the next real car in line.
+4. We update the previous pointer of the next real car to skip the car being removed and point back to the front sentinel.
+5. Finally, we remove (`del`) the car from the line.
+
+This way, the first real car is removed without any issues.
+
+### Summary
+
+Sentinel nodes are like special placeholder cars that help us manage our line of toy cars more easily. They ensure we always have a car at the front and back, which simplifies adding and removing cars. This means we don’t have to worry about special cases where the line is empty or has only one car. Instead, our functions can always assume there are at least two cars (the sentinels), making our code cleaner and simpler!
