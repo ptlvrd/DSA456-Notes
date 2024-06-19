@@ -1370,3 +1370,276 @@ The load factor (λ) shows how full the compartments are:
 - The length of the lines (linked lists) depends on how full the table is (load factor λ).
 - The worst-case scenario is rare, and usually, the operations are efficient.
 
+### 1. Linear Probing vs Chaining
+
+#### **Chaining**
+- **Chaining** uses a "second dimension" to handle collisions in a hash table.
+- Imagine each slot in the hash table has a "bucket" where multiple items can be stored if they hash to the same slot.
+- When you look for an item, you only look at the bucket of the calculated hash slot.
+- Chaining is like having multiple boxes at each slot, so you can store several items in one place if needed.
+
+#### **Linear Probing**
+- **Linear Probing** only allows one item per slot.
+- If there's a collision (two items hash to the same slot), it looks for the next available slot.
+- Linear probing checks the next slot, and if it's full, the next one, and so on.
+- This is like a single line of boxes where each box can hold only one item, and if a box is full, you look for the next empty box.
+
+### 2. How Linear Probing Works
+
+#### **Insertion**
+- **Step 1**: Use a hash function to find the index for a record.
+- **Step 2**: If the spot is occupied, look for the next available spot in a higher index.
+- **Step 3**: Treat the hash table as circular. If you reach the end, go back to the front.
+- **Example**: 
+  - You have keys (items) k1 to k5.
+  - k1 goes to slot 8, k2 to slot 7, k3 to slot 9, k4 to slot 1.
+  - k5 also hashes to slot 8. Since it's full, you put k5 in the next available slot, which is 0.
+
+#### **Searching**
+- **Step 1**: Use the hash function to find where an item should be.
+- **Step 2**: If the slot is occupied by something else, search the next slots until you find the item or an empty slot.
+- **Note**: Stop searching as soon as you find an empty spot.
+
+#### **Removal**
+- **Step 1**: Find the record and remove it, leaving an empty spot.
+- **Step 2**: Check the following records in the cluster (group of continuous records).
+- **Step 3**: Move records to fill the empty spot if needed.
+- **Example**:
+  - You have a cluster of items from slot 7 to 1.
+  - Remove k3 from slot 9.
+  - If needed, move items to keep the cluster intact.
+
+### 3. Tombstoning
+
+#### **Statuses**
+- **Empty**: No item has ever been placed here.
+- **Occupied**: A record is stored here.
+- **Deleted**: An item was here but has been deleted.
+
+#### **Insertion**
+- **Step 1**: If the spot is empty or marked as deleted, put the item there.
+
+#### **Searching**
+- **Step 1**: Use the hash function to find where the item should be.
+- **Step 2**: Check if the key matches. If not, look in the next slot according to the probing method until you find it or hit an empty slot.
+
+#### **Removal**
+- **Step 1**: Find the record and mark it as deleted.
+- **Example**:
+  - Insert items k1 to k3 without collisions.
+  - Insert k4, k5, and k6. Handle collisions by placing them in the next available slot.
+  - If you search for k5, look in the slots according to its probe sequence until you find it.
+
+### 4. Quadratic Probing
+
+#### **How It Works**
+- Instead of looking at the next slot, quadratic probing uses a formula to decide where to look next.
+- The formula: `hash(k) + i^2` for i = 0, 1, 2, 3, etc.
+- This means you look at the slot, then 1 slot away, then 4 slots away, then 9 slots away, and so on.
+
+#### **Example**
+- Insert k1 to k3 (no collisions).
+- Insert k4. If slots are occupied, use the probe sequence to find the next spot.
+- Insert k5 using its quadratic probe sequence.
+
+### 5. Double Hashing
+
+#### **How It Works**
+- Uses two different hash functions.
+- The first hash function finds the initial position.
+- The second hash function determines the offset for the next probes.
+- The probe sequence: `hash1(k), (hash1(k) + hash2(k)) % m, (hash1(k) + 2 * hash2(k)) % m, ...`
+
+#### **Example**
+- Insert k1, k2, k3 without collisions.
+- Insert k4. If there's a collision, use the second hash function to find the next spot.
+- Insert k5 using its double hash sequence.
+
+### Summary
+
+- **Chaining**: Multiple items per slot using a second dimension.
+- **Linear Probing**: One item per slot, look for next empty slot if needed.
+- **Tombstoning**: Marks slots as empty, occupied, or deleted.
+- **Quadratic Probing**: Uses a formula to find next slots further away.
+- **Double Hashing**: Uses two hash functions to find next slots.
+
+I understand your question. Let's make it clear how the hash indices are calculated in the context of our example.
+
+In our example, the hash function for determining the index where each toy should be stored is based on the first letter of the toy's name. Let's assume a simple hash function where:
+
+- `hash1(toy) = (ASCII value of the first character) % 10`
+- `hash2(toy) = (ASCII value of the second character) % 10` (used only for double hashing)
+
+### Let's define the toy names and their corresponding hash indices:
+
+Let's assume toy names are `k1`, `k2`, `k3`, `k4`, `k5`, `k6`, and `k7`.
+
+To get their ASCII values:
+
+- `k` has an ASCII value of 107.
+- `1`, `2`, `3`, `4`, `5`, `6`, and `7` have ASCII values 49, 50, 51, 52, 53, 54, and 55 respectively.
+
+### Calculating Hash Indices
+
+For simplicity, let's focus on the hash1 function for now.
+
+#### k1:
+- First character: `k` -> ASCII value 107
+- `hash1(k1) = 107 % 10 = 7`
+
+#### k2:
+- First character: `k` -> ASCII value 107
+- `hash1(k2) = 107 % 10 = 7`
+
+#### k3:
+- First character: `k` -> ASCII value 107
+- `hash1(k3) = 107 % 10 = 7`
+
+#### k4:
+- First character: `k` -> ASCII value 107
+- `hash1(k4) = 107 % 10 = 7`
+
+#### k5:
+- First character: `k` -> ASCII value 107
+- `hash1(k5) = 107 % 10 = 7`
+
+#### k6:
+- First character: `k` -> ASCII value 107
+- `hash1(k6) = 107 % 10 = 7`
+
+#### k7:
+- First character: `k` -> ASCII value 107
+- `hash1(k7) = 107 % 10 = 7`
+
+Since all toys have the same first character `k`, their `hash1` values will all be 7.
+
+### Example with Linear Probing
+
+Now, let’s rework the example to handle collisions using linear probing.
+
+#### Initial Insertions:
+
+1. **k1**: 
+   - `hash1(k1) = 7`
+   - Insert **k1** at box 7.
+
+2. **k2**:
+   - `hash1(k2) = 7`
+   - Box 7 is occupied.
+   - Move to box 8.
+   - Insert **k2** at box 8.
+
+3. **k3**:
+   - `hash1(k3) = 7`
+   - Box 7 is occupied.
+   - Box 8 is occupied.
+   - Move to box 9.
+   - Insert **k3** at box 9.
+
+4. **k4**:
+   - `hash1(k4) = 7`
+   - Box 7 is occupied.
+   - Box 8 is occupied.
+   - Box 9 is occupied.
+   - Move to box 0.
+   - Insert **k4** at box 0.
+
+5. **k5**:
+   - `hash1(k5) = 7`
+   - Box 7 is occupied.
+   - Box 8 is occupied.
+   - Box 9 is occupied.
+   - Box 0 is occupied.
+   - Move to box 1.
+   - Insert **k5** at box 1.
+
+6. **k6**:
+   - `hash1(k6) = 7`
+   - Box 7 is occupied.
+   - Box 8 is occupied.
+   - Box 9 is occupied.
+   - Box 0 is occupied.
+   - Box 1 is occupied.
+   - Move to box 2.
+   - Insert **k6** at box 2.
+
+7. **k7**:
+   - `hash1(k7) = 7`
+   - Box 7 is occupied.
+   - Box 8 is occupied.
+   - Box 9 is occupied.
+   - Box 0 is occupied.
+   - Box 1 is occupied.
+   - Box 2 is occupied.
+   - Move to box 3.
+   - Insert **k7** at box 3.
+
+The final state of the toy boxes is:
+
+```
+0  1  2  3  4  5  6  7  8  9
+k4 k5 k6 k7 -  -  -  k1 k2 k3
+```
+
+### Double Hashing Example
+
+Now, let’s rework the example to handle collisions using double hashing.
+
+#### Initial Insertions:
+
+1. **k1**:
+   - `hash1(k1) = 7`
+   - Insert **k1** at box 7.
+
+2. **k2**:
+   - `hash1(k2) = 7`
+   - `hash2(k2) = 50 % 10 = 0`
+   - Box 7 is occupied.
+   - Move to box `(7 + 0) % 10 = 7`.
+   - Box 7 is occupied.
+   - Move to box `(7 + 0*0) % 10 = 7`.
+   - Insert **k2** at box 0.
+
+3. **k3**:
+   - `hash1(k3) = 7`
+   - `hash2(k3) = 51 % 10 = 1`
+   - Box 7 is occupied.
+   - Move to box `(7 + 1) % 10 = 8`.
+   - Insert **k3** at box 8.
+
+4. **k4**:
+   - `hash1(k4) = 7`
+   - `hash2(k4) = 52 % 10 = 2`
+   - Box 7 is occupied.
+   - Move to box `(7 + 2) % 10 = 9`.
+   - Insert **k4** at box 9.
+
+5. **k5**:
+   - `hash1(k5) = 7`
+   - `hash2(k5) = 53 % 10 = 3`
+   - Box 7 is occupied.
+   - Move to box `(7 + 3) % 10 = 0`.
+   - Box 0 is occupied.
+   - Move to box `(7 + 2*3) % 10 = 3`.
+   - Insert **k5** at box 3.
+
+6. **k6**:
+   - `hash1(k6) = 7`
+   - `hash2(k6) = 54 % 10 = 4`
+   - Box 7 is occupied.
+   - Move to box `(7 + 4) % 10 = 1`.
+   - Insert **k6** at box 1.
+
+7. **k7**:
+   - `hash1(k7) = 7`
+   - `hash2(k7) = 55 % 10 = 5`
+   - Box 7 is occupied.
+   - Move to box `(7 + 5) % 10 = 2`.
+   - Insert **k7** at box 2.
+
+The final state of the toy boxes with double hashing is:
+
+```
+0  1  2  3  4  5  6  7  8  9
+k2 k6 k7 k5 -  -  -  k1 k3 k4
+```
