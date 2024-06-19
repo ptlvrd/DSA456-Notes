@@ -1241,3 +1241,56 @@ This way of organizing your toys has some problems:
 - Adding a new toy or removing one can be slow because you have to move other toys around.
 
 This way of organizing is not perfect because only finding toys is fast, but adding and removing toys is slow. We need to find a better way to make everything fast!
+
+### Hash Tables
+
+Imagine you have a huge toy box with lots of little compartments (slots). Each toy has a special number (key) on it. A hash table helps you quickly find which compartment each toy goes into.
+
+### Hash Functions
+
+A hash function is like a magic spell that takes the number (key) on a toy and turns it into a smaller number. This smaller number tells you which compartment to put the toy in.
+
+- **Hash Function**: A magic spell that always changes the same number into the same smaller number. It helps you decide where to put each toy.
+
+### Example with Phone Numbers
+
+Let's pretend each toy has a phone number tag like (###) ###-####. We want to use the phone number to decide which compartment it goes into.
+
+- If we only used the first part of the phone number (area code), it wouldn't be good. Why? Because many toys might have the same area code and end up in the same compartment.
+- Instead, using the last part of the phone number is better because it's more random and spreads the toys out better.
+
+### Good Hash Functions
+
+A good hash function makes sure:
+
+- **Uniform**: All compartments are equally likely to get toys.
+- **Random**: It's hard to predict where a toy will go, making the spread more even.
+
+### Load Factor (λ)
+
+Load factor is like checking how full your toy box is. It’s a number that shows how crowded your compartments are.
+
+- **Load Factor (λ)**: The number of toys divided by the number of compartments.
+  
+  \[
+  \lambda = \frac{\text{number of toys}}{\text{number of compartments}}
+  \]
+
+### Collisions
+
+Collisions happen when two toys end up in the same compartment.
+
+#### The Pigeonhole Principle
+
+Imagine you have more toys (letters) than compartments (mailboxes). If you put all toys into compartments, at least one compartment will have more than one toy. This is called the pigeonhole principle.
+
+- **Collision**: When two toys end up in the same compartment because the hash function gave them the same smaller number.
+
+### Dealing with Collisions
+
+Collisions are like when two friends want to sit in the same chair. Since this happens, we need ways to handle it:
+
+1. **Separate Chaining**: Each compartment has a small line of chairs (a linked list). If more than one toy ends up in the same compartment, they just line up one behind the other.
+2. **Open Addressing**: If a toy's compartment is full, we look for the next empty one in a specific way until we find one.
+
+So, hash tables help us find places for our toys quickly, even if they sometimes end up trying to share a spot. We use smart ways to handle those times when they do share.
