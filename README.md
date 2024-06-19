@@ -1126,3 +1126,65 @@ Using an array for a queue is trickier because we need to keep track of the fron
 - **Stacks**: Like a stack of pancakes. Last added is first removed (FILO).
 - **Queues**: Like a line for ice cream. First added is first served (FIFO).
 
+### What is a Table?
+
+Imagine you have a toy box where each toy has a special tag with a number on it. This toy box is like a table. 
+
+- **Table**: It's a box where you keep your toys. Each toy has a tag (key) and the toy itself (value).
+
+### Key-Value Pair
+
+- **Key**: The special number or tag on the toy. Each toy has a different tag number.
+- **Value**: The toy itself. Different toys can have the same name (like two teddy bears), but they will have different tag numbers.
+
+### Unique Keys
+
+In your toy box, no two toys can have the same tag number. Each tag number is special and used only once.
+
+### Table Operations
+
+Here are the different things you can do with your toy box (table):
+
+1. **Initialize**
+
+   - **Initialize**: This means you start with an empty toy box. It’s like when you first get your toy box, and it doesn’t have any toys inside yet.
+
+2. **isEmpty**
+
+   - **isEmpty**: This is how you check if your toy box has any toys in it. If there are no toys, the toy box is empty.
+
+3. **isFull**
+
+   - **isFull**: This is how you check if your toy box has no more space to put any more toys in it. If there's no space left, the toy box is full.
+
+4. **Insert**
+
+   - **Insert**: This is when you add a new toy to your toy box. You put the toy in the box and give it a unique tag number.
+
+5. **Delete**
+
+   - **Delete**: This is when you take a toy out of your toy box. You look for the toy with a specific tag number and remove it from the box.
+
+6. **Update**
+
+   - **Update**: This is when you want to change a toy in your toy box. You find the toy with a specific tag number and change it to a new toy.
+
+7. **Find**
+
+   - **Find**: This is when you look for a toy in your toy box. You search for the toy by its tag number.
+
+8. **Enumerate**
+
+   - **Enumerate**: This is when you count or list all the toys in your toy box. You look at each toy and see how many you have.
+
+### Putting It All Together
+
+- You start with an empty toy box (initialize).
+- You check if there are any toys in it (isEmpty).
+- You can check if there's still space for more toys (isFull).
+- You can add new toys with unique tag numbers (insert).
+- You can take toys out by their tag numbers (delete).
+- You can change a toy by finding its tag number and replacing it with a new toy (update).
+- You can find a specific toy by its tag number (find).
+- You can count or list all the toys in the box (enumerate).
+
