@@ -1188,3 +1188,56 @@ Here are the different things you can do with your toy box (table):
 - You can find a specific toy by its tag number (find).
 - You can count or list all the toys in the box (enumerate).
 
+### Simple Implementation of a Table
+
+Think of your toy box again, but this time we are organizing the toys in a neat row, sorted by their tag numbers.
+
+### Using an Array Sorted by Keys
+
+Imagine lining up all your toys in a straight line, with each toy having a unique number (key) on its tag. The toys are arranged in order from the smallest number to the largest.
+
+### Insertion/Update
+
+When you want to add a new toy or change an existing one:
+
+1. **Finding the Spot**: 
+   - Imagine you have a magic way (binary search) to quickly find where a toy with a certain tag number should go in the line. This is like looking at the numbers quickly to find the right spot.
+   - This magic search is very quick, and it takes a short time (O(log n)).
+
+2. **Adding a New Toy**:
+   - If there's no toy with that tag number, you have to make space for the new toy. This means shifting the toys over to make room. This can take a bit of time because you might have to move many toys (O(n)).
+
+3. **Updating a Toy**:
+   - If there's already a toy with that tag number, you just replace the old toy with the new one. This is quick (O(log n)).
+
+### Removing a Toy
+
+When you want to take a toy out of the line:
+
+1. **Finding the Toy**:
+   - You use the same magic way (binary search) to quickly find the toy by its tag number. This is quick (O(log n)).
+
+2. **Removing and Shifting**:
+   - Once you find the toy, you take it out and shift the other toys to fill the gap. This takes some time because you might have to move many toys (O(n)).
+
+### Searching for a Toy
+
+When you just want to find a toy by its tag number:
+
+- You use the magic search (binary search) to quickly find it. This is quick (O(log n)).
+
+### Drawbacks
+
+This way of organizing your toys has some problems:
+
+- **Searching**: Finding a toy is fast (O(log n)), which is good.
+- **Adding New Toys**: Making space for new toys can be slow (O(n)) because you have to move a lot of toys.
+- **Removing Toys**: Taking a toy out and shifting the others can be slow (O(n)) for the same reason.
+
+### Summary
+
+- Your toys are lined up in order by their tag numbers.
+- Finding a toy is fast because you use a special search.
+- Adding a new toy or removing one can be slow because you have to move other toys around.
+
+This way of organizing is not perfect because only finding toys is fast, but adding and removing toys is slow. We need to find a better way to make everything fast!
