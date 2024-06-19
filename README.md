@@ -1294,3 +1294,79 @@ Collisions are like when two friends want to sit in the same chair. Since this h
 2. **Open Addressing**: If a toy's compartment is full, we look for the next empty one in a specific way until we find one.
 
 So, hash tables help us find places for our toys quickly, even if they sometimes end up trying to share a spot. We use smart ways to handle those times when they do share.
+
+### Chaining in Hash Tables
+
+Imagine you have a big toy box with many small compartments (slots). Each compartment can hold a line of toys, one behind the other (a linked list).
+
+### How Chaining Works
+
+1. **Hash Index**: A magic spell (hash function) changes a toy's number (key) into a smaller number. This smaller number tells you which compartment the toy goes into.
+
+2. **Linked List**: Inside each compartment, toys can line up one after the other. If two toys get the same compartment number, they just form a line.
+
+### Example with Chaining
+
+Let's say you have 6 toys with these keys (special numbers): k1, k2, k3, k4, k5, k6. Your hash function changes these keys into smaller numbers (hash indexes) as follows:
+
+- k1 -> 0
+- k2 -> m - 3
+- k3 -> m - 1
+- k4 -> m - 3
+- k5 -> 0
+- k6 -> m - 3
+
+If `m` is the number of compartments (slots), the toys will be stored like this:
+
+- Compartment 0: k1, k5
+- Compartment m - 3: k2, k4, k6
+- Compartment m - 1: k3
+
+Each compartment has a line of toys (linked list).
+
+### Operations in Chaining
+
+1. **Insert (k, v)**:
+   - Find the compartment using the hash function.
+   - Search the linked list in that compartment for the key.
+   - If the key exists, update the toy.
+   - If the key doesn't exist, add the new toy to the end of the line.
+
+2. **Search (k)**:
+   - Find the compartment using the hash function.
+   - Search the linked list in that compartment for the key.
+   - If the key is found, return the toy.
+   - If the key is not found, the toy is not in the box.
+
+3. **Delete (k)**:
+   - Find the compartment using the hash function.
+   - Search the linked list in that compartment for the key.
+   - If the key is found, remove the toy from the line.
+   - If the key is not found, the toy is not in the box.
+
+### Run Time for Operations
+
+- **Find Compartment**: Quick (takes the same time no matter how many toys) because we just use the magic spell (hash function).
+- **Add/Modify/Delete Toy**: Quick, once we find the right spot in the line.
+- **Search in Linked List**: Takes longer if the line is very long. The worst case is if all toys end up in one compartment, making the search slow (but this rarely happens).
+
+### Load Factor (λ)
+
+The load factor (λ) shows how full the compartments are:
+
+\[
+\lambda = \frac{\text{number of toys}}{\text{number of compartments}}
+\]
+
+### Worst Case vs. Average Case
+
+- **Worst Case**: If all toys go into one compartment, searching the line takes a long time (θ(n)).
+- **Average Case**: If toys are spread out evenly (which usually happens), each line is short, making the search quick (θ(1 + λ)).
+
+### Summary
+
+- Chaining uses a linked list in each compartment to handle collisions (when two toys want the same spot).
+- Operations like insert, search, and delete are generally quick.
+- The length of the lines (linked lists) depends on how full the table is (load factor λ).
+- The worst-case scenario is rare, and usually, the operations are efficient.
+
