@@ -1643,3 +1643,82 @@ The final state of the toy boxes with double hashing is:
 0  1  2  3  4  5  6  7  8  9
 k2 k6 k7 k5 -  -  -  k1 k3 k4
 ```
+
+### Trees
+
+**Trees** are a very important data structure in computer science. They are used to organize data hierarchically, which helps in searching and managing data efficiently. Trees are used in many areas of computing, such as databases, file systems, and more.
+
+### Definitions
+
+#### Node
+- A **node** is a fundamental part of a tree that stores data. In diagrams, each circle represents a node.
+  
+#### Root Node
+- The **root node** is the topmost node in a tree from which all other nodes branch out. In the given diagram, **A** is the root node.
+
+#### Subtree
+- A **subtree** is a portion of a tree that includes a node and all its descendants (all nodes that come down from it). For example, if we consider **B** as the root of a subtree, then the subtree includes **B**, **D**, **E**, and **F**.
+
+#### Empty Trees
+- An **empty tree** is a tree with no nodes at all.
+
+#### Leaf Node
+- A **leaf node** is a node that does not have any children. It is at the end of a branch. Examples from the diagram include **D**, **E**, **F**, **I**, **J**, and **G**.
+
+#### Children
+- **Children** are nodes that are directly connected one level below a given node. For example, **B** is a child of **A**. **I** is a child of **H**.
+
+#### Parent
+- A **parent** is a node directly connected one level above a given node. For instance, **A** is the parent of **B**. **H** is the parent of **I**.
+
+#### Sibling
+- **Siblings** are nodes that share the same parent. For example, **E** and **F** are siblings since they both share **D** as their parent. However, **H** is not a sibling of **E** and **F**.
+
+#### Ancestor
+- An **ancestor** is any node that can be reached by moving upwards from a given node. For example, **C**, **A**, and **H** are all ancestors of **I**. **B** and **G** are not.
+
+#### Descendants (or Successors)
+- **Descendants** (or **successors**) are nodes that can be reached by moving downwards from a given node. For instance, **G**, **H**, **I**, and **J** are descendants of **C**.
+
+#### Depth
+- **Depth** is the distance from the root node to a particular node. The root node is at depth 0. **B** and **C** are at depth 1. **D**, **E**, **F**, **G**, and **H** are at depth 2. **I** and **J** are at depth 3.
+
+#### Height
+- **Height** is the total number of nodes from the root to the furthest leaf. The height of the given tree is 4.
+
+#### Path
+- A **path** is a sequence of nodes and edges connecting a node to an ancestor or descendant. For example, the path from **A** to **J** might be described as **A -> C -> H -> J**.
+
+#### Binary Tree
+- A **binary tree** is a tree where every node has at most two children, which are referred to as the left child and the right child. The given tree is not a binary tree because node **B** has three children.
+
+### Tree Implementation
+
+#### Linked Structure
+- Trees are often implemented using a linked structure similar to linked lists. In a linked list, each node contains data and a pointer to the next node (and sometimes to the previous node). In a tree, each node contains data and pointers to its children.
+
+#### Array/List Implementation
+- Trees can also be implemented using arrays or lists. For a binary heap, the root is stored at index 0. For any node stored at index \(i\):
+  - The left child's index is \(2i + 1\)
+  - The right child's index is \(2i + 2\)
+  - The parent's index is \(\left\lfloor\frac{i-1}{2}\right\rfloor\)
+  
+  This method is efficient for complete trees (trees where every level, except possibly the last, is fully filled, and all nodes are as far left as possible). For non-complete trees, it can lead to many unused spaces in the array.
+
+### Summary
+- Trees are hierarchical data structures used for efficient data organization and search.
+- Nodes are the basic elements of trees.
+- The root node is the topmost node.
+- Subtrees are parts of the tree starting from a node.
+- Empty trees have no nodes.
+- Leaf nodes have no children.
+- Children are nodes directly below a parent node.
+- Parents are nodes directly above a child node.
+- Siblings share the same parent.
+- Ancestors are nodes that can be reached by moving upwards.
+- Descendants are nodes that can be reached by moving downwards.
+- Depth is the distance from the root node.
+- Height is the total number of nodes from the root to the furthest leaf.
+- Paths are sequences of nodes connecting an ancestor to a descendant.
+- Binary trees have at most two children per node.
+- Trees can be implemented using linked structures or arrays/lists.
