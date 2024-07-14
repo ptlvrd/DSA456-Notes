@@ -1722,3 +1722,81 @@ k2 k6 k7 k5 -  -  -  k1 k3 k4
 - Paths are sequences of nodes connecting an ancestor to a descendant.
 - Binary trees have at most two children per node.
 - Trees can be implemented using linked structures or arrays/lists.
+
+### Heap and Heap Sort
+
+**Heap Sort** is a sorting algorithm that uses a binary heap data structure to sort elements. A binary heap is a type of complete binary tree which can be used to implement a priority queue.
+
+### Priority Queue
+
+A **priority queue** is a special type of queue where the element that comes out next depends on its priority rather than the order in which it was added. In a regular queue, the first element in is the first element out (FIFO - First In, First Out). In a priority queue, elements are removed based on their priority.
+
+### Basic Operations on a Binary Heap
+
+#### Insert
+- **Insert** operation adds an item to the binary heap. The new item is initially added at the end of the heap and then "bubbled up" to its correct position to maintain the heap property.
+
+#### Delete
+- **Delete** operation removes the item with the highest priority (in a max-heap) or the lowest priority (in a min-heap) from the binary heap. The root element is removed and replaced with the last element in the heap, which is then "bubbled down" to its correct position to maintain the heap property.
+
+### Binary Heap
+
+A **binary heap** is a complete binary tree that satisfies the heap property:
+- **Max-Heap:** The value of each node is greater than or equal to the values of its children.
+- **Min-Heap:** The value of each node is less than or equal to the values of its children.
+
+### Heap Sort Algorithm
+
+The idea behind **Heap Sort** is to use the binary heap to sort an array. The steps are:
+
+1. **Build the Heap:** Convert the array into a binary heap. This involves inserting each element of the array into the heap. If it's a max-heap, the largest element will be at the root; if it's a min-heap, the smallest element will be at the root.
+2. **Sort the Array:** Repeatedly remove the root (the largest or smallest element) from the heap and place it at the end of the array. After each removal, reheapify the remaining elements to maintain the heap property. This process continues until all elements have been removed from the heap and placed back into the array in sorted order.
+
+### Detailed Steps of Heap Sort
+
+1. **Build the Heap**
+   - Start with an unsorted array.
+   - Insert each element into the binary heap. For example, if you have an array `[4, 10, 3, 5, 1]`, you insert 4, then 10, then 3, and so on, maintaining the heap property at each step.
+
+2. **Heapify**
+   - After building the heap, ensure that the heap property is maintained throughout the tree. For example, in a max-heap, the largest element should always be at the root.
+
+3. **Sort the Array**
+   - Remove the root element (the largest in a max-heap or the smallest in a min-heap) and place it at the end of the array.
+   - Replace the root with the last element in the heap and reduce the heap size by one.
+   - Reheapify the heap to maintain the heap property.
+   - Repeat this process until all elements are sorted.
+
+### Example of Heap Sort
+
+Let's say we have an array `[4, 10, 3, 5, 1]` and we want to sort it using heap sort.
+
+1. **Build the Heap:** Convert the array into a max-heap:
+   ```
+   Initial array: [4, 10, 3, 5, 1]
+   Max-Heap:      [10, 5, 3, 4, 1]
+   ```
+
+2. **Sort the Array:** Repeatedly remove the largest element and reheapify:
+   ```
+   Remove 10: [5, 4, 3, 1, 10]
+   Reheapify: [5, 4, 3, 1]
+   Remove 5:  [4, 1, 3, 5, 10]
+   Reheapify: [4, 1, 3]
+   Remove 4:  [3, 1, 4, 5, 10]
+   Reheapify: [3, 1]
+   Remove 3:  [1, 3, 4, 5, 10]
+   Reheapify: [1]
+   Remove 1:  [1, 3, 4, 5, 10]
+   ```
+
+   The array is now sorted: `[1, 3, 4, 5, 10]`.
+
+### Summary
+- **Heap Sort** is a sorting algorithm that uses a binary heap to sort elements.
+- A **priority queue** allows elements to be removed based on their priority.
+- A **binary heap** is a complete binary tree that satisfies the heap property (max-heap or min-heap).
+- **Insert** operation adds an item to the heap and ensures the heap property is maintained.
+- **Delete** operation removes the root (highest or lowest priority) and reheapifies the remaining elements.
+- **Heap Sort** involves building a heap from the array and repeatedly removing the root element to sort the array.
+
